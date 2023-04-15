@@ -1,0 +1,13 @@
+name: tailscale
+container:
+  entrypoint: /usr/local/bin/containerboot
+  environment:
+    - PATH=${PATH}:/usr/local/bin
+  security:
+    maskedPaths:
+      - /rootfs
+    writeableRootfs: true
+depends:
+  - network:
+    - addresses
+restart: always

@@ -1,0 +1,10 @@
+version: v1alpha1
+metadata:
+  name: tailscale
+  version: 1.38.4
+  author: Raymond Douglas
+  description: |
+    This system extension provides the Tailscale service.
+  compatibility:
+    talos:
+      version: ">= v1.3.0"
