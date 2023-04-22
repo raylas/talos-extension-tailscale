@@ -1,20 +1,20 @@
 name: tailscale
 container:
-  entrypoint: /rootfs/usr/local/bin/containerboot
+  entrypoint: /usr/local/bin/containerboot
   environment:
-    - PATH=${PATH}:/rootfs/usr/local/bin
+    - PATH=${PATH}:/usr/local/bin
     - TS_STATE_DIR=/var/run/tailscale
     - TS_KUBE_SECRET=""
-  # security:
-  #   maskedPaths:
-  #     - /rootfs
-  #   writeableRootfs: true
+  security:
+    maskedPaths:
+      - /rootfs
+    writeableRootfs: true
   mounts:
     - source: /var/run/tailscale
       destination: /var/run/tailscale
       type: bind
       options:
-        - bind
+        - rbind
         - rshared
         - rw
 depends:
