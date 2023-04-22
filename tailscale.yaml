@@ -3,19 +3,20 @@ container:
   entrypoint: /usr/local/bin/containerboot
   environment:
     - PATH=${PATH}:/usr/local/bin
-    - TS_STATE_DIR=/var/lib/tailscale
+    - TS_STATE_DIR=/var/run/tailscale
     - TS_KUBE_SECRET=""
   security:
     writeableRootfs: true
   mounts:
     - source: /var/run/tailscale
-      destination: /var/lib/tailscale
+      destination: /var/run/tailscale
       type: bind
       options:
         - rshared
         - rbind
         - rw
 depends:
+  - service: cri
   - network:
     - addresses
 restart: always
