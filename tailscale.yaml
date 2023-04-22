@@ -6,17 +6,15 @@ container:
     - TS_STATE_DIR=/var/run/tailscale
     - TS_KUBE_SECRET=""
   security:
-    # maskedPaths:
-    #   - /rootfs
     writeableRootfs: true
-  # mounts:
-  #   - source: /var/run/tailscale
-  #     destination: /var/run/tailscale
-  #     type: bind
-  #     options:
-  #       - rbind
-  #       - rshared
-  #       - rw
+  mounts:
+    - source: /var/run/tailscale
+      destination: /var/run/tailscale
+      type: bind
+      options:
+        - rshared
+        - rbind
+        - rw
 depends:
   - network:
     - addresses
