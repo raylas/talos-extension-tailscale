@@ -3,15 +3,15 @@ container:
   entrypoint: /usr/local/bin/containerboot
   environment:
     - PATH=${PATH}:/usr/local/bin
-    - TS_STATE_DIR=/var/tailscale/local
+    - TS_STATE_DIR=/var/run/tailscale
     - TS_KUBE_SECRET=""
   security:
     maskedPaths:
       - /rootfs
     writeableRootfs: true
   mounts:
-    - source: /var/tailscale/local
-      destination: /var/tailscale/local
+    - source: /var/run/tailscale
+      destination: /var/run/tailscale
       type: bind
       options:
         - bind
