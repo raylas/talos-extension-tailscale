@@ -9,14 +9,14 @@ container:
     # maskedPaths:
     #   - /rootfs
     writeableRootfs: true
-  mounts:
-    - source: /var/run/tailscale
-      destination: /var/run/tailscale
-      type: bind
-      options:
-        - rbind
-        - rshared
-        - rw
+  # mounts:
+  #   - source: /var/run/tailscale
+  #     destination: /var/run/tailscale
+  #     type: bind
+  #     options:
+  #       - rbind
+  #       - rshared
+  #       - rw
 depends:
   - network:
     - addresses
