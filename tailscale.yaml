@@ -8,12 +8,13 @@ container:
       - /rootfs
     writeableRootfs: true
   mounts:
-    - source: /var/lib/tailscale
-      destination: /var/lib/tailscale
+    - source: /var/tailscale/local
+      destination: /var/tailscale/local
       type: bind
       options:
-        - rshared
         - bind
+        - rshared
+        - rw
 depends:
   - network:
     - addresses
